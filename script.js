@@ -248,7 +248,7 @@ class Game {
     this.choices = this.cardCount; //choicesは0になっているので注意 !!
     this.spinCount = 0; //回転数
     this.card.initCards(); // カード初期
-    this.speedupBtn.classList.remove("disabled"); //speedupボタンを押せるようにする
+    this.resetSpeedup(); //スピードupリセット
   }
 
   //スピードupリセット
@@ -262,7 +262,6 @@ class Game {
     this.stage = 1;
     this.cardCount = 3; //初期枚数
     this.resetContent(); //リセット
-    this.resetSpeedup(); //スピードupリセット
   }
 }
 
