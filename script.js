@@ -115,7 +115,8 @@ class Game {
     this.randomNum = "undefind"; //正解
     this.spinCount = "undefind"; //カード回転数
     this.spinSpeedUp = false; //回転スピードアップ
-    this.spinTime = "undefind"; //回転スピード
+    this.spinInterval = "undefind"; //回転間隔
+
     //spinボタン
     this.spinBtn.addEventListener("click", () => {
       if (this.spinBtn.classList.contains("disabled")) return; //spinボタンが既に押してある
@@ -147,7 +148,15 @@ class Game {
 
     //speedupボタン
     this.speedupBtn.addEventListener("click", () => {
+      this.cardsClassNode = document.querySelectorAll(".card"); //cssのcardクラス(Node)
+      this.cardsClass = Array.from(this.cardsClassNode); //配列に変更
+      //回転スピード変更
+      this.cardsClass.forEach((card) => {
+        card.style.transition = "0.5s";
+      });
+
       this.speedupBtn.classList.add("disabled"); //speedupボタンを押せなくする
+
       this.spinSpeedUp = true;
     });
 
@@ -158,15 +167,15 @@ class Game {
   spinCard() {
     if (this.choices > 0) {
       if (this.spinSpeedUp === false) {
-        this.spinTime = 500;
+        this.spinInterval = 500;
       } else {
-        this.spinTime = 200;
+        this.spinInterval = 200;
       }
       setTimeout(() => {
         this.card.cards[this.spinCount].classList.add("spin"); //spinクラスを追加
         this.spinCount++; //カード回転数
         this.spinCard(); //カード回転
-      }, this.spinTime);
+      }, this.spinInterval);
       this.choices--; //choicesを減らしているので注意!!
     } else {
       this.quensionBtn.classList.remove("disabled"); //questionボタンを押せるようにする
@@ -255,6 +264,12 @@ class Game {
   resetSpeedup() {
     this.spinSpeedUp = false; //回転スピード初期化
     this.speedupBtn.classList.remove("disabled"); //speedupボタン使用可
+    this.cardsClassNodeReturn = document.querySelectorAll(".card"); //cssのcardクラス(Node)
+    this.cardsClassReturn = Array.from(this.cardsClassNodeReturn); //配列に変更
+    //回転スピード変更
+    this.cardsClassReturn.forEach((card) => {
+      card.style.transition = "1s";
+    });
   }
 
   //ゲーム初期化
