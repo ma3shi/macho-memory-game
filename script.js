@@ -47,7 +47,7 @@ class Card {
       this.nums.push(i);
     }
     this.game.randomNum = Math.floor(Math.random() * this.game.choices) + 1; //正解
-    console.log(this.game.randomNum); //正解
+    // console.log(this.game.randomNum); //正解
   }
 
   //カード作成
@@ -60,7 +60,7 @@ class Card {
         Math.floor(Math.random() * this.nums.length),
         1
       )[0]; //数字をランダムに切り出す
-      console.log(cutNum); //カードの数字
+      // console.log(cutNum); //カードの数字
 
       cardFront.setAttribute("data-id", cutNum); //データ属性追加
       cardFront.src = `img/img_${cutNum}.png`; //画像
