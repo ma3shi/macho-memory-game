@@ -187,11 +187,11 @@ class Game {
     const questionComments = [
       "プロテインマッチョ",
       "ドーピングマッチョ",
-      "店員マッチョ",
-      "女性マッチョ",
+      "プロレスマッチョ",
+      "ボディビルマッチョ",
       "スーツマッチョ",
       "抱っこマッチョ",
-      "プロレスマッチョ",
+      "店員マッチョ",
     ];
     this.rollSound.pause(); //ロール音ストップ
     this.questionSound.play(); //出題音
